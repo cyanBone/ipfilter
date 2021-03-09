@@ -14,11 +14,11 @@ func NewIPFilters() *IPFilters {
 }
 
 func (I *IPFilters) Load(ips string) (IPFilter, error) {
-	IpSplit := strings.Split(ips, "\n")
+	IpSplit := strings.Split(ips, ",")
 
 	for _, s2 := range IpSplit {
-		chars := delChar(s2)
-		if chars != "" {
+		chars := s2
+		if s2 != "" {
 			var filter IPFilter
 			switch {
 			case strings.Contains(chars, "-"):
